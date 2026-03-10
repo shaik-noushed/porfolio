@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noushed Shaik — SEO Content Writer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #0b0e14;
+    --bg2:      #0f1318;
+    --surface:  #141820;
+    --border:   rgba(130,160,210,0.1);
+    --blue:     #4f87c5;
+    --blue-lt:  #7aaee0;
+    --blue-dim: rgba(79,135,197,0.15);
+    --cream:    #e8ecf4;
+    --muted:    #6b7a96;
+    --light:    #b0becc;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(79,135,197,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,135,197,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .orb {
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    pointer-events:none;
+    z-index:0;
+  }
+  .orb-1 {
+    width:600px; height:600px;
+    background:rgba(79,135,197,0.07);
+    top:-150px; right:-100px;
+  }
+  .orb-2 {
+    width:400px; height:400px;
+    background:rgba(79,135,197,0.05);
+    bottom:20%; left:-100px;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:center;
+    padding:100px 64px 80px; position:relative; overflow:hidden;
+    position:relative; z-index:1;
+    gap:0;
+  }
+
+  .hero-left { padding-right:0; max-width:700px; }
+
+  .badge {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--blue-dim);
+    border:1px solid rgba(79,135,197,0.25);
+    padding:8px 18px;
+    font-size:11px; font-weight:500;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--blue-lt);
+    margin-bottom:32px;
+  }
+  .badge::before {
+    content:'';
+    width:6px; height:6px;
+    background:var(--blue);
+    border-radius:50%;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.4;transform:scale(0.75);}
+  }
+
+  h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(58px,6.5vw,92px);
+    font-weight:300;
+    line-height:0.92;
+    letter-spacing:-0.02em;
+    margin-bottom:6px;
+  }
+  h1 strong {
+    font-weight:700;
+    display:block;
+    background:linear-gradient(135deg,var(--cream) 0%,var(--blue-lt) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .hero-sub {
+    font-size:15px; font-weight:300;
+    color:var(--light);
+    line-height:1.8;
+    max-width:500px;
+    margin:28px 0 44px;
+  }
+  .hero-sub strong { color:var(--cream); font-weight:500; }
+
+  .stats-row {
+    display:flex; gap:0;
+    margin-bottom:44px;
+    border:1px solid var(--border);
+    width:fit-content;
+  }
+  .stat {
+    padding:20px 32px;
+    border-right:1px solid var(--border);
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .stat:last-child { border-right:none; }
+  .stat-n {
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px; font-weight:700;
+    color:var(--blue-lt);
+    line-height:1;
+  }
+  .stat-l {
+    font-size:10px; letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:4px;
+    white-space:nowrap;
+  }
+
+  .cta-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+
+  .btn-p {
+    background:var(--blue);
+    color:#fff;
+    padding:14px 32px;
+    font-size:12px; font-weight:600;
+    letter-spacing:0.15em; text-transform:uppercase;
+    text-decoration:none;
+    display:inline-block;
+    transition:all 0.3s;
+    border:none; cursor:pointer;
+  }
+  .btn-p:hover {
+    background:var(--blue-lt);
+    transform:translateY(-2px);
+    box-shadow:0 8px 28px rgba(79,135,197,0.35);
+  }
+  .btn-o {
+    border:1px solid var(--border);
+    color:var(--light);
+    padding:14px 32px;
+    font-size:12px; font-weight:500;
+    letter-spacing:0.15em; text-transform:uppercase;
+    text-decoration:none;
+    display:inline-block;
+    transition:all 0.3s;
+  }
+  .btn-o:hover { border-color:var(--blue); color:var(--blue-lt); }
+
+  /* ====== TICKER ====== */
+  .ticker {
+    background:var(--blue);
+    overflow:hidden;
+    padding:12px 0;
+    position:relative; z-index:1;
+  }
+  .ticker-track {
+    display:flex;
+    animation:tick 24s linear infinite;
+    width:max-content;
+  }
+  .ticker-item {
+    display:flex; align-items:center; gap:18px;
+    padding:0 28px;
+    font-size:11px; font-weight:600;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:rgba(255,255,255,0.9);
+    white-space:nowrap;
+  }
+  .ticker-sep {
+    width:4px; height:4px;
+    background:rgba(255,255,255,0.4);
+    border-radius:50%;
+    flex-shrink:0;
+  }
+  @keyframes tick {
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ====== SECTIONS ====== */
+  section {
+    padding:96px 64px;
+    position:relative; z-index:1;
+  }
+
+  .sec-label {
+    font-size:10px; letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--blue);
+    font-weight:600;
+    margin-bottom:12px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .sec-label::before {
+    content:''; width:28px; height:1px; background:var(--blue);
+    flex-shrink:0;
+  }
+
+  .sec-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(38px,4vw,56px);
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.02em;
+    margin-bottom:16px;
+  }
+  .sec-title em {
+    font-style:italic;
+    color:var(--blue-lt);
+  }
+
+  /* ====== ABOUT ====== */
+  .about-grid {
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:72px;
+    margin-top:52px;
+    align-items:start;
+  }
+  .about-body {
+    font-size:17px; font-weight:300;
+    color:var(--light); line-height:1.85;
+  }
+  .about-body strong { color:var(--cream); font-weight:500; }
+  .about-body p + p { margin-top:18px; }
+
+  .skills-box {
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:36px;
+  }
+  .skills-box h3 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px; font-weight:600;
+    margin-bottom:24px;
+    color:var(--cream);
+  }
+  .skill-pill {
+    display:inline-block;
+    background:var(--blue-dim);
+    border:1px solid rgba(79,135,197,0.2);
+    color:var(--blue-lt);
+    font-size:12px; font-weight:500;
+    letter-spacing:0.07em;
+    padding:7px 16px;
+    margin:4px 4px 4px 0;
+    text-transform:uppercase;
+    cursor:default;
+    transition:all 0.25s;
+  }
+  .skill-pill:hover {
+    background:rgba(79,135,197,0.25);
+    border-color:var(--blue);
+    transform:translateY(-2px);
+  }
+
+  /* ====== EXPERIENCE ====== */
+  .exp-section { background:var(--bg2); }
+
+  .exp-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:2px;
+    margin-top:52px;
+  }
+
+  .exp-card {
+    background:var(--surface);
+    padding:44px 40px;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.35s;
+    cursor:default;
+  }
+  .exp-card::after {
+    content:'';
+    position:absolute;
+    bottom:0; left:0;
+    width:0; height:2px;
+    background:var(--blue);
+    transition:width 0.4s ease;
+  }
+  .exp-card:hover::after { width:100%; }
+  .exp-card:hover { background:#181e28; transform:translateY(-3px); }
+
+  .exp-num {
+    position:absolute;
+    top:20px; right:24px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px; font-weight:700;
+    color:rgba(79,135,197,0.06);
+    line-height:1;
+    pointer-events:none;
+    user-select:none;
+  }
+  .exp-co {
+    font-size:10px; letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--blue); font-weight:600;
+    margin-bottom:12px;
+  }
+  .exp-role {
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px; font-weight:600;
+    line-height:1.2; margin-bottom:8px;
+    color:var(--cream);
+  }
+  .exp-dur {
+    font-size:11px; color:var(--muted);
+    letter-spacing:0.1em; text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .exp-desc {
+    font-size:14px; color:var(--muted);
+    line-height:1.8; font-weight:300;
+  }
+  .exp-tags {
+    display:flex; flex-wrap:wrap; gap:6px;
+    margin-top:22px; padding-top:18px;
+    border-top:1px solid var(--border);
+  }
+  .exp-tag {
+    font-size:10px; letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    padding:4px 10px;
+  }
+
+  /* ====== PUBLISHED WORK ====== */
+  .work-section { background:var(--bg); }
+
+  .work-categories {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:52px;
+  }
+
+  .work-cat {
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:32px;
+    transition:all 0.3s;
+  }
+  .work-cat:hover {
+    border-color:rgba(79,135,197,0.3);
+    background:#141b26;
+  }
+
+  .work-cat-label {
+    font-size:10px; letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--blue); font-weight:600;
+    margin-bottom:8px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .work-cat-label::before {
+    content:''; width:16px; height:1px; background:var(--blue);
+    flex-shrink:0;
+  }
+
+  .work-cat h3 {
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px; font-weight:600;
+    margin-bottom:20px; color:var(--cream);
+  }
+
+  .article-link {
+    display:flex; align-items:flex-start; gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid var(--border);
+    text-decoration:none;
+    transition:all 0.25s;
+  }
+  .article-link:last-child { border-bottom:none; }
+  .article-link:hover .art-title { color:var(--blue-lt); }
+  .article-link:hover { padding-left:6px; }
+
+  .art-arrow {
+    color:var(--blue);
+    font-size:13px;
+    flex-shrink:0;
+    margin-top:1px;
+    transition:transform 0.25s;
+    line-height:1.5;
+  }
+  .article-link:hover .art-arrow { transform:translateX(4px); }
+
+  .art-title {
+    font-size:13px; font-weight:400;
+    color:var(--light); line-height:1.5;
+    transition:color 0.25s;
+  }
+
+  /* ====== EDUCATION ====== */
+  .edu-section { background:var(--bg2); }
+
+  .edu-card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:52px 56px;
+    max-width:680px;
+    margin-top:52px;
+    position:relative;
+    overflow:hidden;
+  }
+  .edu-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0;
+    width:3px; height:100%;
+    background:var(--blue);
+  }
+  .edu-deg {
+    font-family:'Cormorant Garamond',serif;
+    font-size:28px; font-weight:700;
+    margin-bottom:10px; line-height:1.3;
+  }
+  .edu-school {
+    font-size:15px; color:var(--blue-lt);
+    font-weight:500; margin-bottom:18px;
+  }
+  .edu-meta {
+    display:flex; gap:28px;
+    flex-wrap:wrap;
+  }
+  .edu-m {
+    font-size:12px; color:var(--muted);
+    letter-spacing:0.08em; text-transform:uppercase;
+    display:flex; align-items:center; gap:8px;
+  }
+  .edu-m::before {
+    content:''; width:4px; height:4px;
+    background:var(--blue); border-radius:50%;
+    flex-shrink:0;
+  }
+
+  /* ====== CONTACT ====== */
+  .contact-section {
+    background:linear-gradient(135deg,#0d1525 0%,#0b0e14 100%);
+    border-top:1px solid var(--border);
+  }
+
+  .contact-inner {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:start;
+    margin-top:52px;
+  }
+
+  .contact-big {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(42px,5vw,68px);
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-0.02em;
+  }
+  .contact-big em {
+    font-style:italic;
+    color:var(--blue-lt);
+  }
+  .contact-big p {
+    font-size:15px;
+    font-family:'Outfit',sans-serif;
+    font-weight:300;
+    color:var(--muted);
+    line-height:1.75;
+    margin-top:20px;
+    letter-spacing:0;
+  }
+
+  .contact-links { display:flex; flex-direction:column; gap:12px; }
+
+  .c-link {
+    display:flex; align-items:center; gap:16px;
+    text-decoration:none;
+    padding:16px 22px;
+    border:1px solid var(--border);
+    color:var(--cream);
+    font-size:14px;
+    transition:all 0.3s;
+  }
+  .c-link:hover {
+    border-color:var(--blue);
+    background:var(--blue-dim);
+    color:var(--blue-lt);
+    padding-left:30px;
+  }
+  .c-icon {
+    width:34px; height:34px;
+    background:var(--blue-dim);
+    border:1px solid rgba(79,135,197,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px;
+    flex-shrink:0;
+    color:var(--blue-lt);
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    padding:28px 64px;
+    background:var(--bg);
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.04em;
+    position:relative; z-index:1;
+  }
+
+  /* ====== FADE ANIMATIONS ====== */
+  .fade {
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .fade.in { opacity:1; transform:translateY(0); }
+  .d1{transition-delay:0.1s;}
+  .d2{transition-delay:0.2s;}
+  .d3{transition-delay:0.3s;}
+  .d4{transition-delay:0.4s;}
+
+  /* ====== RESPONSIVE ====== */
+  @media(max-width:960px){
+    nav { padding:16px 24px; }
+    .nav-links { display:none; }
+    .hero {
+      grid-template-columns:1fr;
+      padding:80px 24px 40px;
+      min-height:auto;
+    }
+
+    
+    
+    .photo-ring-outer,
+    
+    
+    section { padding:60px 24px; }
+    .about-grid,
+    .contact-inner { grid-template-columns:1fr; gap:40px; }
+    .exp-grid { grid-template-columns:1fr; }
+    .work-categories { grid-template-columns:1fr; }
+    footer {
+      padding:20px 24px;
+      flex-direction:column;
+      gap:6px;
+      text-align:center;
+    }
+    .stats-row { flex-wrap:wrap; }
+    .stat { padding:16px 24px; }
+  }
+
+  
+  
+  
+
+  /* ====== RECOMMENDATIONS ====== */
+  .rec-section { background:var(--bg); }
+  .rec-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:52px;
+  }
+  .rec-card {
+    background:var(--surface);
+    border:1px solid var(--border);
+    padding:36px 32px;
+    position:relative;
+    overflow:hidden;
+    transition:all 0.3s;
+  }
+  .rec-card:hover {
+    border-color:rgba(79,135,197,0.3);
+    background:#141b26;
+    transform:translateY(-3px);
+  }
+  .rec-quote-mark {
+    position:absolute;
+    top:16px; right:20px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:80px; font-weight:700;
+    color:rgba(79,135,197,0.07);
+    line-height:1;
+    pointer-events:none;
+    user-select:none;
+  }
+  .rec-text {
+    font-size:14px; font-weight:300;
+    color:var(--light); line-height:1.85;
+    margin-bottom:28px;
+    font-style:italic;
+  }
+  .rec-author {
+    display:flex; flex-direction:column; gap:4px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .rec-name {
+    font-size:14px; font-weight:600;
+    color:var(--cream); letter-spacing:0.02em;
+  }
+  .rec-role {
+    font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--blue-lt);
+  }
+  .rec-company {
+    font-size:11px; color:var(--muted);
+    letter-spacing:0.08em;
+  }
+  @media(max-width:960px){
+    .rec-grid { grid-template-columns:1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+
+  <!-- LEFT: TEXT -->
+  <div class="hero-left">
+    <div class="badge">Available for Work</div>
+    <h1>
+      Noushed
+      <strong>Shaik</strong>
+    </h1>
+    <p class="hero-sub">
+      SEO Content Writer with <strong>1+ year of experience</strong> crafting blogs across finance,
+      travel and Gen Z lifestyle. <strong>150+ articles published</strong> on Google.
+      Proficient in <strong>WordPress</strong> and keyword-driven content strategy.
+    </p>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-n">150+</span>
+        <span class="stat-l">Articles Published</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">1+</span>
+        <span class="stat-l">Yrs Experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-n">4</span>
+        <span class="stat-l">Industries Served</span>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="mailto:noushedshaik362@gmail.com" class="btn-p">Hire Me</a>
+      <a href="https://www.linkedin.com/in/noushed-shaik" target="_blank" rel="noopener" class="btn-o">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-item">SEO Content Writing<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Finance Blogs<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Travel Writing<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Gen Z Content<span class="ticker-sep"></span></div>
+    <div class="ticker-item">WordPress<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Keyword Research<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Proofreading<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Digital Marketing<span class="ticker-sep"></span></div>
+    <div class="ticker-item">SEO Content Writing<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Finance Blogs<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Travel Writing<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Gen Z Content<span class="ticker-sep"></span></div>
+    <div class="ticker-item">WordPress<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Keyword Research<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Proofreading<span class="ticker-sep"></span></div>
+    <div class="ticker-item">Digital Marketing<span class="ticker-sep"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">About Me</div>
+  <div class="sec-title">Words that <em>work hard</em></div>
+  <div class="about-grid">
+    <div class="about-body fade">
+      <p>
+        I started my writing journey with <strong>technical blogs</strong>, learning to break down
+        dense, complex topics into content anyone could understand and actually enjoy reading.
+        That obsession with clarity never left.
+      </p>
+      <p>
+        Over the past year, I have built experience across finance, travel and Gen Z lifestyle content,
+        completing three internships and working with content agencies. I have also worked with
+        <strong>WordPress</strong>, publishing and managing blog content directly on live websites.
+      </p>
+      <p>
+        My writing has been <strong>published on Google</strong>, earned a strong Letter of Recommendation,
+        and reached thousands of real readers. Currently finishing my B.Tech in CSE (AI and ML),
+        I bring both <strong>technical thinking and creative voice</strong> to every piece I write.
+      </p>
+    </div>
+    <div class="skills-box fade d2">
+      <h3>Core Skills</h3>
+      <span class="skill-pill">Content Writing</span>
+      <span class="skill-pill">SEO Writing</span>
+      <span class="skill-pill">Keyword Research</span>
+      <span class="skill-pill">WordPress</span>
+      <span class="skill-pill">Proofreading</span>
+      <span class="skill-pill">Editing</span>
+      <span class="skill-pill">Research</span>
+      <span class="skill-pill">Finance Content</span>
+      <span class="skill-pill">Travel Writing</span>
+      <span class="skill-pill">Gen Z Lifestyle</span>
+      <span class="skill-pill">Social Media Copy</span>
+      <span class="skill-pill">Digital Marketing</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-section" id="experience">
+  <div class="sec-label">Work Experience</div>
+  <div class="sec-title">Where I have <em>made my mark</em></div>
+<div class="exp-grid">
+<div class="exp-card fade d1">
+      <div class="exp-num">01</div>
+      <div class="exp-co"><a href="https://ledgerscfo.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">LedgersCFO ↗</a></div>
+      <div class="exp-role">Finance Content Writer</div>
+      <div class="exp-dur">Content Writing Agency</div>
+      <p class="exp-desc">
+        Wrote clear, practical finance blogs that demystified complex money topics including
+        budgeting, taxes, investments and accounting services. Focused on SEO performance
+        and making financial content accessible to business owners and individuals.
+      </p>
+      <div class="exp-tags">
+        <span class="exp-tag">Finance</span>
+        <span class="exp-tag">SEO Blogs</span>
+        <span class="exp-tag">Accounting</span>
+        <span class="exp-tag">B2B Content</span>
+      </div>
+    </div><div class="exp-card fade d2">
+      <div class="exp-num">02</div>
+      <div class="exp-co"><a href="https://anaveda.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Anaveda ↗</a></div>
+      <div class="exp-role">Travel Content Writer</div>
+      <div class="exp-dur">Travel Agency</div>
+      <p class="exp-desc">
+        Developed destination blogs and promotional travel content that blended storytelling
+        with strong audience engagement strategies. Content published on the agency's live
+        website covering iconic Indian travel destinations.
+      </p>
+      <div class="exp-tags">
+        <span class="exp-tag">Travel</span>
+        <span class="exp-tag">Destination Blogs</span>
+        <span class="exp-tag">Promotional Copy</span>
+        <span class="exp-tag">WordPress</span>
+      </div>
+    </div><div class="exp-card fade d3">
+      <div class="exp-num">03</div>
+      <div class="exp-co"><a href="https://writeronrent.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Writer On Rent ↗</a></div>
+      <div class="exp-role">SEO Content Writer</div>
+      <div class="exp-dur">Content Writing Agency</div>
+      <p class="exp-desc">
+        Delivered high-quality, SEO-optimised content for multiple companies across diverse
+        industries. Produced on-demand blogs, product descriptions and web copy tailored
+        to each client's brand voice, ensuring strong search performance and engagement.
+      </p>
+      <div class="exp-tags">
+        <span class="exp-tag">Freelance</span>
+        <span class="exp-tag">SEO</span>
+        <span class="exp-tag">Multi-Niche</span>
+        <span class="exp-tag">Web Copy</span>
+      </div>
+    </div><div class="exp-card fade d4">
+      <div class="exp-num">04</div>
+      <div class="exp-co"><a href="https://www.jarurat.care/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Jarurat Care Foundation ↗</a></div>
+      <div class="exp-role">SEO Content Writer</div>
+      <div class="exp-dur">Dec 2024 &ndash; Feb 2025 &nbsp;&middot;&nbsp; Cancer Awareness NGO</div>
+      <p class="exp-desc">
+        Created informative, SEO-optimised blogs on cancer causes, symptoms, treatments and
+        prevention as part of JCF&rsquo;s Content Development team. Distilled complex medical
+        information into clear, engaging and accessible content, significantly boosting the
+        visibility of the foundation&rsquo;s awareness campaigns across India.
+      </p>
+      <div class="exp-tags">
+        <span class="exp-tag">Health Content</span>
+        <span class="exp-tag">SEO</span>
+        <span class="exp-tag">Cancer Awareness</span>
+        <span class="exp-tag">NGO</span>
+      </div>
+    </div><div class="exp-card fade d1">
+      <div class="exp-num">05</div>
+      <div class="exp-co">Ctrl+Z</div>
+      <div class="exp-role">Content Writer — Gen Z</div>
+      <div class="exp-dur">Startup — Gen Z Content</div>
+      <p class="exp-desc">
+        Created relatable blogs and social media content built for Gen Z audiences.
+        Culturally aware, conversational writing designed to spark real engagement.
+        Contributed fresh content ideas that shaped the startup's editorial voice.
+      </p>
+      <div class="exp-tags">
+        <span class="exp-tag">Gen Z</span>
+        <span class="exp-tag">Social Media</span>
+        <span class="exp-tag">Blog Writing</span>
+        <span class="exp-tag">Trend Content</span>
+      </div>
+    </div>
+
+  
+  </div>
+</section>
+
+<!-- PUBLISHED WORK -->
+<section class="work-section" id="work">
+  <div class="sec-label">Published Work</div>
+  <div class="sec-title">Read my <em>live articles</em></div>
+  <div class="work-categories">
+
+    <div class="work-cat fade d1">
+      <div class="work-cat-label">Travel Writing</div>
+      <h3>Anaveda Travel Journal</h3>
+      <a href="https://anaveda.com/travel-journal/lotus-temple-where-every-religion-finds-its-place" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Lotus Temple — Where Every Religion Finds Its Place</span>
+      </a>
+      <a href="https://anaveda.com/travel-journal/why-leh-feels-special-from-the-moment-you-arrive" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Why Leh Feels Special From the Moment You Arrive</span>
+      </a>
+      <a href="https://anaveda.com/travel-journal/why-you-should-visit-kailasagiri-for-your-next-hill-trip" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Why You Should Visit Kailasagiri for Your Next Hill Trip</span>
+      </a>
+      <a href="https://anaveda.com/travel-journal/what-happens-when-you-join-a-real-indian-wedding-celebration" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">What Happens When You Join a Real Indian Wedding Celebration</span>
+      </a>
+      <a href="https://anaveda.com/travel-journal/why-you-must-experience-the-taj-mahal-once-in-your-lifetime" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Why You Must Experience the Taj Mahal Once in Your Lifetime</span>
+      </a>
+    </div>
+
+    <div class="work-cat fade d2">
+      <div class="work-cat-label">Finance Content (SEO)</div>
+      <h3>LedgersCFO Blog</h3>
+      <a href="https://ledgerscfo.com/blog/saas-accounting-services-for-subscription-based-startups" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">SaaS Accounting Services for Subscription-Based Startups</span>
+      </a>
+      <a href="https://ledgerscfo.com/blog/what-happens-if-i-have-more-than-10000-in-a-foreign-bank-account" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">What Happens If I Have More Than $10,000 in a Foreign Bank Account</span>
+      </a>
+      <a href="https://ledgerscfo.com/blog/do-you-need-a-ca-or-cpa-for-your-business-and-whats-the-difference" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Do You Need a CA or CPA for Your Business — and What's the Difference</span>
+      </a>
+      <a href="https://ledgerscfo.com/blog/cross-border-tax-consultant-for-global-businesses" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Cross-Border Tax Consultant for Global Businesses</span>
+      </a>
+      <a href="https://ledgerscfo.com/blog/saas-accounting-expert-for-businesses" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">SaaS Accounting Expert for Businesses</span>
+      </a>
+    </div>
+
+    <div class="work-cat fade d3">
+      <div class="work-cat-label">SEO Content Writer</div>
+      <h3>Writer On Rent</h3>
+      <a href="https://docs.google.com/document/d/1cOjf1M0lCryA78TOH-VmSWHbAjFSg788Mb_Xdv4eaH8/edit?usp=sharing" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">ViroKill Surfaces for Health-Focused Homes in 2026</span>
+      </a>
+      <a href="https://docs.google.com/document/d/1Vtcd4-m2zHkZS1UbZsMdU1G5jMhfJfXD5DYScC4yD9g/edit?usp=sharing" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">Startup Business Loan for Women in India</span>
+      </a>
+      <a href="https://docs.google.com/document/d/1BEyhmokOfqSm3MLPfevDCUn2sL3e2bmOmkEOMrU-ois/edit?usp=sharing" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">How Payment Tokenization Supports Cross-Border Payments Securely</span>
+      </a>
+      <a href="https://docs.google.com/document/d/1ntoCiok-qr2WsEno9RAfSwV8EPd0Vok93CS63Swl7xQ/edit?usp=sharing" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">What You Should Look For When Picking a Useful Gift</span>
+      </a>
+      <a href="https://docs.google.com/document/d/1qtp_sJhz57m0Hg35uWIr0tQ0zJZJytQTtBJRioF1nac/edit?usp=sharing" target="_blank" rel="noopener" class="article-link">
+        <span class="art-arrow">&#8599;</span>
+        <span class="art-title">New Bike Loan vs Used Bike Loan: Which Is Better in 2026?</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+  <div class="sec-label">Education</div>
+  <div class="sec-title">The <em>foundation</em></div>
+  <div class="edu-card fade">
+    <div class="edu-deg">B.Tech in Computer Science Engineering<br>Specialisation in AI and Machine Learning</div>
+    <div class="edu-school">Anil Neerukonda Institute of Technology and Sciences</div>
+    <div class="edu-meta">
+      <span class="edu-m">Visakhapatnam, Andhra Pradesh</span>
+      <span class="edu-m">4th Year</span>
+      <span class="edu-m">Expected Graduation: 2026</span>
+    </div>
+  </div>
+  <div class="edu-card fade d2" style="margin-top:24px;">
+    <div class="edu-deg">Digital Marketing Certification</div>
+    <div class="edu-school">Zinmaat</div>
+    <div class="edu-meta">
+      <span class="edu-m">Online</span>
+      <span class="edu-m">SEO &amp; Content Strategy</span>
+      <span class="edu-m">Certified</span>
+    </div>
+    <a href="https://www.linkedin.com/posts/shaik-noushed_zinmatt-digitalmarketing-professionaldevelopment-activity-7281551188536270848-w6sY?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD5AJTYBQp1-ghksQHQtn1ilVeQssARg68c" target="_blank" rel="noopener" style="
+      display:inline-flex; align-items:center; gap:8px;
+      margin-top:20px;
+      font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--blue-lt); text-decoration:none;
+      border:1px solid rgba(79,135,197,0.25);
+      padding:8px 18px;
+      transition:all 0.25s;
+    " onmouseover="this.style.borderColor='var(--blue)';this.style.background='rgba(79,135,197,0.1)'"
+       onmouseout="this.style.borderColor='rgba(79,135,197,0.25)';this.style.background='transparent'">
+      &#8599;&nbsp; View Certificate
+    </a>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="rec-section" id="recommendations">
+  <div class="sec-label">Recommendations</div>
+  <div class="sec-title">What clients <em>say</em></div>
+  <div class="rec-grid">
+
+    <div class="rec-card fade d1">
+      <div class="rec-quote-mark">&ldquo;</div>
+      <p class="rec-text">
+        &ldquo;Noushed has been an excellent blog writer for us &mdash; very reliable, fast, and consistent
+        with quality. His research depth and writing clarity made it easy for us to publish
+        high-quality content regularly.&rdquo;
+      </p>
+      <div class="rec-author">
+        <span class="rec-name">Ayush Garg</span>
+        <span class="rec-role">Founder &amp; CEO</span>
+        <span class="rec-company">LedgersCFO &nbsp;&middot;&nbsp; January 2026</span>
+      </div>
+    </div>
+
+    <div class="rec-card fade d2">
+      <div class="rec-quote-mark">&ldquo;</div>
+      <p class="rec-text">
+        &ldquo;Shaik Noushed is a skilled and thoughtful writer who brings clarity, creativity, and
+        consistency to every blog. His ability to adapt quickly, contribute as a team player,
+        and learn on the go made a strong impression. I&rsquo;m confident he&rsquo;ll be a
+        valuable asset wherever he contributes next.&rdquo;
+      </p>
+      <div class="rec-author">
+        <span class="rec-name">Praveen Vantamuri</span>
+        <span class="rec-role">Aspiring Product Manager &nbsp;&middot;&nbsp; Top PM Fellow @ NextLeap</span>
+        <span class="rec-company">Ctrl+Z &nbsp;&middot;&nbsp; April 2025</span>
+      </div>
+    </div>
+
+    <div class="rec-card fade d3">
+      <div class="rec-quote-mark">&ldquo;</div>
+      <p class="rec-text">
+        &ldquo;Noushed demonstrated exceptional skills in content writing, research, and SEO
+        optimisation, contributing significantly to our mission of improving cancer care
+        awareness. His meticulous research and keen understanding of audience needs ensured
+        content was not only informative but discoverable. I strongly recommend him for
+        positions that value creativity, analytical thinking, and a results-oriented mindset.&rdquo;
+      </p>
+      <div class="rec-author">
+        <span class="rec-name">Priyanka Joshi</span>
+        <span class="rec-role">Jarurat Care Foundation (JCF)</span>
+        <span class="rec-company">Dec 2024 &ndash; Feb 2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="sec-label">Get In Touch</div>
+  <div class="contact-inner">
+    <div class="contact-big fade">
+      Let's build<br>
+      something<br>
+      <em>worth reading.</em>
+      <p>
+        Looking for a writer who brings SEO strategy, clarity and creative voice?
+        Open to freelance projects, content retainers and full-time opportunities.
+      </p>
+    </div>
+    <div class="contact-links fade d2">
+      <a href="mailto:noushedshaik362@gmail.com" class="c-link">
+        <div class="c-icon">@</div>
+        noushedshaik362@gmail.com
+      </a>
+      <a href="tel:+918247381480" class="c-link">
+        <div class="c-icon">☏</div>
+        +91 82473 81480
+      </a>
+      <a href="https://www.linkedin.com/in/noushed-shaik" target="_blank" rel="noopener" class="c-link">
+        <div class="c-icon">in</div>
+        linkedin.com/in/noushed-shaik
+      </a>
+      <div class="c-link" style="cursor:default;">
+        <div class="c-icon">📍</div>
+        Visakhapatnam, Andhra Pradesh
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Noushed Shaik — SEO Content Writer</span>
+  <span>Visakhapatnam, Andhra Pradesh, India</span>
+</footer>
+
+<script>
+(function(){
+  // Scroll fade-in
+  var fades = document.querySelectorAll('.fade');
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  fades.forEach(function(el){ observer.observe(el); });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id = a.getAttribute('href');
+      if(id === '#') return;
+      var target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
